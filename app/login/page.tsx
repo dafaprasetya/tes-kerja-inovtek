@@ -162,16 +162,7 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div style={{
-            marginTop: 24, padding: '12px 14px', borderRadius: 10,
-            background: '#ffffff04', border: '1px solid var(--border-subtle)',
-          }}>
-            <p style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 6 }}>
-              Demo Credentials
-            </p>
-            <p className="mono" style={{ fontSize: 12, color: 'var(--text-secondary)' }}>admin@inovtek.id / admin123</p>
-            <p className="mono" style={{ fontSize: 12, color: 'var(--text-secondary)' }}>hr@inovtek.id / hr123</p>
-          </div>
+          
         </div>
       </div>
     </div>
