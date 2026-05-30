@@ -1,6 +1,8 @@
-import { supabase } from './supabase'
+import { getSupabase } from './supabase'
 import { mockJobs, mockCandidates } from './mock-data'
 import { Job, Candidate } from '@/types'
+
+const supabase = getSupabase()
 
 const isSupabaseConfigured = () => {
   return (
