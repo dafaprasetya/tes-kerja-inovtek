@@ -15,14 +15,14 @@ const isSupabaseConfigured = () => {
 
 // Jobs
 export async function getJobs(): Promise<Job[]> {
-  if (!isSupabaseConfigured()) return mockJobs
+  if (!isSupabaseConfigured() || !supabase) return mockJobs
   const { data, error } = await supabase.from('jobs').select('*').order('created_at', { ascending: false })
   if (error) return mockJobs
   return data as Job[]
 }
 
 export async function addJob(job: Omit<Job, 'id' | 'created_at'>): Promise<Job | null> {
-  if (!isSupabaseConfigured()) {
+  if (!isSupabaseConfigured() || !supabase) {
     const newJob: Job = { ...job, id: Date.now().toString(), created_at: new Date().toISOString() }
     mockJobs.unshift(newJob)
     return newJob
@@ -33,7 +33,7 @@ export async function addJob(job: Omit<Job, 'id' | 'created_at'>): Promise<Job |
 }
 
 export async function updateJobStatus(id: string, status: Job['status']): Promise<boolean> {
-  if (!isSupabaseConfigured()) {
+  if (!isSupabaseConfigured() || !supabase) {
     const job = mockJobs.find(j => j.id === id)
     if (job) job.status = status
     return true
@@ -43,7 +43,7 @@ export async function updateJobStatus(id: string, status: Job['status']): Promis
 }
 
 export async function deleteJob(id: string): Promise<boolean> {
-  if (!isSupabaseConfigured()) {
+  if (!isSupabaseConfigured() || !supabase) {
     const idx = mockJobs.findIndex(j => j.id === id)
     if (idx !== -1) mockJobs.splice(idx, 1)
     return true
@@ -54,14 +54,14 @@ export async function deleteJob(id: string): Promise<boolean> {
 
 // Candidates
 export async function getCandidates(): Promise<Candidate[]> {
-  if (!isSupabaseConfigured()) return mockCandidates
+  if (!isSupabaseConfigured() || !supabase ) return mockCandidates
   const { data, error } = await supabase.from('candidates').select('*').order('applied_at', { ascending: false })
   if (error) return mockCandidates
   return data as Candidate[]
 }
 
 export async function updateCandidateStatus(id: string, status: Candidate['status']): Promise<boolean> {
-  if (!isSupabaseConfigured()) {
+  if (!isSupabaseConfigured() || !supabase ) {
     const c = mockCandidates.find(c => c.id === id)
     if (c) c.status = status
     return true
@@ -71,7 +71,7 @@ export async function updateCandidateStatus(id: string, status: Candidate['statu
 }
 
 export async function addCandidate(candidate: Omit<Candidate, 'id' | 'applied_at'>): Promise<Candidate | null> {
-  if (!isSupabaseConfigured()) {
+  if (!isSupabaseConfigured() || !supabase) {
     const newCandidate: Candidate = { ...candidate, id: Date.now().toString(), applied_at: new Date().toISOString() }
     mockCandidates.unshift(newCandidate)
     return newCandidate
