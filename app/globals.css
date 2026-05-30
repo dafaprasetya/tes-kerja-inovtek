@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+
+:root {
+  --bg-primary: #0a0b0f;
+  --bg-secondary: #111318;
+  --bg-card: #16191f;
+  --bg-card-hover: #1c2028;
+  --border: #ffffff0d;
+  --border-subtle: #ffffff08;
+  --text-primary: #f0f2f5;
+  --text-secondary: #8b929e;
+  --text-muted: #555b66;
+  --accent: #4f7cff;
+  --accent-hover: #3d6aed;
+  --accent-soft: #4f7cff14;
+  --success: #22c55e;
+  --success-soft: #22c55e14;
+  --warning: #f59e0b;
+  --warning-soft: #f59e0b14;
+  --danger: #ef4444;
+  --danger-soft: #ef444414;
+  --purple: #a855f7;
+  --purple-soft: #a855f714;
+  --teal: #14b8a6;
+  --teal-soft: #14b8a614;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ffffff15; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #ffffff25; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fadeIn { animation: fadeIn 0.35s ease forwards; }
+.animate-slideIn { animation: slideIn 0.3s ease forwards; }
+.stagger-1 { animation-delay: 0.05s; opacity: 0; }
+.stagger-2 { animation-delay: 0.1s; opacity: 0; }
+.stagger-3 { animation-delay: 0.15s; opacity: 0; }
+.stagger-4 { animation-delay: 0.2s; opacity: 0; }
+.stagger-5 { animation-delay: 0.25s; opacity: 0; }
+.stagger-6 { animation-delay: 0.3s; opacity: 0; }
+
+.glass { background: var(--bg-card); border: 1px solid var(--border); }
+.glass-hover:hover { background: var(--bg-card-hover); border-color: #ffffff14; }
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+.gradient-text {
+  background: linear-gradient(135deg, #4f7cff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dot-pattern {
+  background-image: radial-gradient(circle, #ffffff08 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+input, textarea, select { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.status-open { background: var(--success-soft); color: var(--success); }
+.status-closed { background: var(--danger-soft); color: var(--danger); }
+.status-draft { background: var(--warning-soft); color: var(--warning); }
+.status-applied { background: var(--accent-soft); color: var(--accent); }
+.status-interview { background: var(--purple-soft); color: var(--purple); }
+.status-hired { background: var(--success-soft); color: var(--success); }
+.status-rejected { background: var(--danger-soft); color: var(--danger); }
